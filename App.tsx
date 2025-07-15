@@ -6,7 +6,8 @@
  */
 
 import { NewAppScreen } from '@react-native/new-app-screen';
-import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
+import { StatusBar, StyleSheet, useColorScheme, View, Text } from 'react-native';
+import FONTS from './src/shared/constants/fonts';
 
 function App() {
   const isDarkMode = useColorScheme() === 'dark';
@@ -14,7 +15,9 @@ function App() {
   return (
     <View style={styles.container}>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+      <Text style={styles.testFont}>This is Poppins-Bold font!</Text>
       <NewAppScreen templateFileName="App.tsx" />
+      
     </View>
   );
 }
@@ -22,6 +25,11 @@ function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  testFont: {
+    fontFamily: FONTS.POPPINS_BOLD,
+    fontSize: 20,
+    margin: 100,
   },
 });
 
