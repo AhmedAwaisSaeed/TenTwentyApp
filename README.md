@@ -95,3 +95,68 @@ To learn more about React Native, take a look at the following resources:
 - [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
 - [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
 - [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+
+## Recommended Project Structure (MVVM, Feature-Based)
+
+```
+src/
+  assets/
+    images/         # App images
+    icons/          # App icons
+    fonts/          # Custom fonts
+  features/
+    movieList/
+      components/    # Reusable components specific to movie list feature
+      screens/
+        movieList/
+          MovieListScreen.tsx
+          movieListScreen.styles.ts
+          movieListScreen.types.ts
+    movieDetail/
+      components/    # Reusable components specific to movie detail feature
+      screens/
+        movieDetail/
+          MovieDetailScreen.tsx
+          movieDetailScreen.styles.ts
+          movieDetailScreen.types.ts
+    movieSearch/
+      components/    # Reusable components specific to movie search feature
+      screens/
+        movieSearch/
+          MovieSearchScreen.tsx
+          movieSearchScreen.styles.ts
+          movieSearchScreen.types.ts
+    seatMapping/
+      components/    # Reusable components specific to seat mapping feature
+      screens/
+        seatMapping/
+          SeatMappingScreen.tsx
+          seatMappingScreen.styles.ts
+          seatMappingScreen.types.ts
+  shared/
+    components/     # Reusable UI components (Button, Spinner, CustomHeader, etc.)
+    constants/      # Shared constants (layout, platform, etc.)
+    hooks/          # Reusable custom hooks
+    utils/          # Utility functions
+    styles/         # Shared/global style files
+    theme/          # App theme (colors, fonts, spacing, etc.)
+  core/
+    api/            # API logic (Axios/fetch)
+    config/         # App configuration
+    store/
+      slices/       # Redux Toolkit slices (e.g., authSlice)
+      hooks.ts      # Typed Redux hooks
+      store.ts      # Redux store setup
+    types/          # Global TypeScript types
+  navigation/       # App navigation setup (e.g., AppNavigator.tsx)
+App.tsx             # Entry point
+```
+
+- **assets/**: Images, icons, and fonts for the app.
+- **features/**: Each feature (movieList, movieDetail, movieSearch, seatMapping) is isolated with its own components and screens.
+- **shared/**: Common UI components, hooks, utilities, styles, and the `theme/` folder for theming.
+- **core/**: Centralized logic for API, config, state management, and global types.
+- **navigation/**: All navigation logic and setup.
+- **App.tsx**: Main entry point.
+
+> This structure supports MVVM, feature modularity, and scalable code organization.
