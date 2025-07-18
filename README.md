@@ -95,6 +95,7 @@ You've successfully run and modified your React Native App. :partying_face:
 - Metro config cleaned up for native SVG usage
 - All navigation and icon code is modular and maintainable
 - **API Structure**: All API logic will be placed in `src/core/api` and Axios will be used for HTTP requests
+- **State Management**: Will use Redux Toolkit (RTK) or Zustand for global state management
 
 # Troubleshooting
 
