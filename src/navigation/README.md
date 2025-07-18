@@ -1,3 +1,24 @@
+# Features Implemented
+
+- Pixel-perfect bottom tab navigation with custom design
+- Four main tabs: Dashboard, Watch, Media Library, More
+- Each tab has its own stack navigator for scalability
+- Custom tab bar component with:
+  - Rounded top corners
+  - Seamless background (no white corners)
+  - Proper spacing and padding
+  - Poppins font for labels (bold for active, regular for inactive)
+- SVG icons for each tab, converted to React Native components using SVGR
+  - Icons use the `fill` prop for dynamic color (active/inactive)
+  - All icons are fully themeable and editable in code
+- Theme system for centralized color management
+- TypeScript support throughout navigation and icons
+- Metro config cleaned up for native SVG usage
+- All navigation and icon code is modular and maintainable
+- **API Structure**: All API logic will be placed in `src/core/api` and Axios will be used for HTTP requests
+
+---
+
 # Navigation Structure
 
 This project uses React Navigation v6 with a bottom tabs navigation pattern.
@@ -24,15 +45,16 @@ src/navigation/
 - **Theme Integration**: Uses centralized color theme from `src/shared/theme/colors.ts`
 - **Font Integration**: Uses Poppins font family for labels
 
-### Tab Structure1*Dashboard**: Main dashboard screen
+### Tab Structure
+1. **Dashboard**: Main dashboard screen
 2. **Watch**: Video/movie watching section
-3**Media Library**: User's media collection
+3. **Media Library**: User's media collection
 4. **More**: Additional options and settings
 
 ### Design Specifications
-- **Background Color**: `#1F12 (Dark purple-grey)
+- **Background Color**: `#1F1D2B` (Dark purple-grey)
 - **Active Tab Color**: `#FFFFFF` (White)
-- **Inactive Tab Color**: `#82788(Grey)
+- **Inactive Tab Color**: `#827D88` (Grey)
 - **Tab Bar Height**: 80px
 - **Rounded Corners**: Top-left and top-right (20px radius)
 - **Font**: Poppins (Regular for inactive, Bold for active)
@@ -52,19 +74,22 @@ const WatchStack = () => {
       <Stack.Screen 
         name="WatchMain" 
         component={WatchScreen}
-        options=[object Object][object Object]          title: Watch,
+        options={{
+          title: 'Watch',
           headerStyle: {
             backgroundColor: COLORS.PRIMARY,
           },
           headerTintColor: COLORS.TEXT_PRIMARY,
-          headerTitleStyle: [object Object]        fontFamily: 'Poppins-Bold',
+          headerTitleStyle: {
+            fontFamily: 'Poppins-Bold',
           },
         }}
       />
       <Stack.Screen 
         name="NewScreen" 
         component={NewScreen}
-        options=[object Object][object Object]          title: 'New Screen',
+        options={{
+          title: 'New Screen',
         }}
       />
     </Stack.Navigator>
@@ -93,10 +118,10 @@ You can modify colors, spacing, and styling there.
 - `react-native-screens`
 - `react-native-safe-area-context`
 - `react-native-svg`
-- `react-native-svg-transformer`
+- `@svgr/cli`
 
 ## Setup Notes
-1 **Metro Config**: Configured to handle SVG files
-2*TypeScript**: SVG type declarations added
+1. **Metro Config**: Cleaned up for native SVG usage
+2. **TypeScript**: SVG type declarations added
 3. **Theme**: Centralized color management
-4**Fonts**: Poppins font family integrated 
+4. **Fonts**: Poppins font family integrated 
