@@ -77,10 +77,25 @@ When you want to forcefully reload, for example to reset the state of your app, 
 
 You've successfully run and modified your React Native App. :partying_face:
 
-### Now what?
+# Features Implemented
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
+- Pixel-perfect bottom tab navigation with custom design
+- Four main tabs: Dashboard, Watch, Media Library, More
+- Each tab has its own stack navigator for scalability
+- Custom tab bar component with:
+  - Rounded top corners
+  - Seamless background (no white corners)
+  - Proper spacing and padding
+  - Poppins font for labels (bold for active, regular for inactive)
+- SVG icons for each tab, converted to React Native components using SVGR
+  - Icons use the `fill` prop for dynamic color (active/inactive)
+  - All icons are fully themeable and editable in code
+- Theme system for centralized color management
+- TypeScript support throughout navigation and icons
+- Metro config cleaned up for native SVG usage
+- All navigation and icon code is modular and maintainable
+- **API Structure**: All API logic will be placed in `src/core/api` and Axios will be used for HTTP requests
+- **State Management**: Will use Redux Toolkit (RTK) or Zustand for global state management
 
 # Troubleshooting
 
@@ -95,3 +110,68 @@ To learn more about React Native, take a look at the following resources:
 - [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
 - [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
 - [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+
+## Recommended Project Structure (MVVM, Feature-Based)
+
+```
+src/
+  assets/
+    images/         # App images
+    icons/          # App icons
+    fonts/          # Custom fonts
+  features/
+    movieList/
+      components/    # Reusable components specific to movie list feature
+      screens/
+        movieList/
+          MovieListScreen.tsx
+          movieListScreen.styles.ts
+          movieListScreen.types.ts
+    movieDetail/
+      components/    # Reusable components specific to movie detail feature
+      screens/
+        movieDetail/
+          MovieDetailScreen.tsx
+          movieDetailScreen.styles.ts
+          movieDetailScreen.types.ts
+    movieSearch/
+      components/    # Reusable components specific to movie search feature
+      screens/
+        movieSearch/
+          MovieSearchScreen.tsx
+          movieSearchScreen.styles.ts
+          movieSearchScreen.types.ts
+    seatMapping/
+      components/    # Reusable components specific to seat mapping feature
+      screens/
+        seatMapping/
+          SeatMappingScreen.tsx
+          seatMappingScreen.styles.ts
+          seatMappingScreen.types.ts
+  shared/
+    components/     # Reusable UI components (Button, Spinner, CustomHeader, etc.)
+    constants/      # Shared constants (layout, platform, etc.)
+    hooks/          # Reusable custom hooks
+    utils/          # Utility functions
+    styles/         # Shared/global style files
+    theme/          # App theme (colors, fonts, spacing, etc.)
+  core/
+    api/            # API logic (Axios/fetch)
+    config/         # App configuration
+    store/
+      slices/       # Redux Toolkit slices (e.g., authSlice)
+      hooks.ts      # Typed Redux hooks
+      store.ts      # Redux store setup
+    types/          # Global TypeScript types
+  navigation/       # App navigation setup (e.g., AppNavigator.tsx)
+App.tsx             # Entry point
+```
+
+- **assets/**: Images, icons, and fonts for the app.
+- **features/**: Each feature (movieList, movieDetail, movieSearch, seatMapping) is isolated with its own components and screens.
+- **shared/**: Common UI components, hooks, utilities, styles, and the `theme/` folder for theming.
+- **core/**: Centralized logic for API, config, state management, and global types.
+- **navigation/**: All navigation logic and setup.
+- **App.tsx**: Main entry point.
+
+> This structure supports MVVM, feature modularity, and scalable code organization.
